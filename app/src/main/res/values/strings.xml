@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MicroHandGestureDataCollectionWatch</string>
+    <string-array name="hand_options">
+        <item>左手</item>
+        <item>右手</item>
+    </string-array>
+
+    <string-array name="gesture_options">
+        <item>单击[正]</item>
+        <item>双击[正]</item>
+        <item>握拳[正]</item>
+        <item>左滑[正]</item>
+        <item>右滑[正]</item>
+        <item>鼓掌[负]</item>
+        <item>抖腕[负]</item>
+        <item>拍打[负]</item>
+        <item>日常[负]</item>
+    </string-array>
+
+    <string-array name="force_options">
+        <item>中</item>
+        <item>轻</item>
+        <item>重</item>
+    </string-array>
+</resources>

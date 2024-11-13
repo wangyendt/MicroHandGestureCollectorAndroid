@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color> <!-- 蓝色，你可以修改为其他颜色值 -->
+    <color name="colorPrimaryDark">#3700B3</color> <!-- 深色的主要颜色 -->
+    <color name="colorAccent">#03DAC5</color> <!-- 强调色 -->
+</resources>

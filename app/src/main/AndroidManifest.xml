@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="heytap.wearable.permission.health.PROVIDER" />
+    <uses-permission android:name="com.coloros.colorconnect.permission.WEARABLE" />
+    <uses-permission android:name="com.heytap.wearable.linkservice.permission.WEARABLE" />
+    <uses-permission android:name="com.heytap.accessory.permission.ACCESSORY_FRAMEWORK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!--访问手表健康app的ContentProvider权限。-->
+    <uses-permission android:name="heytap.wearable.permission.health.PROVIDER" />
+    <!--OLink.-->
+    <uses-permission android:name="com.coloros.colorconnect.permission.WEARABLE" />
+    <uses-permission android:name="com.heytap.wearable.linkservice.permission.WEARABLE" />
+    <!--OAF.-->
+    <uses-permission android:name="com.heytap.accessory.permission.ACCESSORY_FRAMEWORK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"> <!-- 确保这里的注释语法正确 -->
+
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:taskAffinity="com.wayne.microhandgesturedatacollectionwatch.watch">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

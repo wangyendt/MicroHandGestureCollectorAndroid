@@ -1,0 +1,43 @@
+plugins {
+    alias(libs.plugins.androidApplication)
+}
+
+android {
+    namespace 'com.wayne.microhandgesturecollectorandroid'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.wayne.microhandgesturecollectorandroid"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation('com.wayne:lark-custom-bot:1.1.0')
+    implementation('com.wayne:lark-bot:1.0.4')
+
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'org.json:json:20230227'
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    implementation libs.play.services.wearable
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+}
