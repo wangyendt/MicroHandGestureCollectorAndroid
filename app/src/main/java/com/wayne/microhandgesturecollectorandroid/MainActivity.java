@@ -10,6 +10,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -59,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private FileWriter fileWriterPpg;
     private File ppgFile;
 
+    private PowerManager.WakeLock wakeLock;
+
+    private static final int PPG_TYPE = SensorUtils.TYPE_PPG_SENSOR;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -67,6 +71,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+
+        // 获取PowerManager服务
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
+        // 创建WakeLock
+        wakeLock = powerManager.newWakeLock(
+                PowerManager.PARTIAL_WAKE_LOCK |
+                        PowerManager.ON_AFTER_RELEASE,
+                "MicroHandGesture::WakeLockTag");
+
+        // 获取WakeLock
+        wakeLock.acquire();
 
         // 启动前台服务，确保数据采集在后台持续进行
         Intent serviceIntent = new Intent(this, DataCollectionService.class);
@@ -96,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
         // 添加PPG传感器初始化
-        ppg = sensorManager.getDefaultSensor(SensorUtils.TYPE_PPG_SENSOR);
+        ppg = sensorManager.getDefaultSensor(PPG_TYPE);
 
         buttonToggle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (event.sensor.getType() == SensorUtils.TYPE_PPG_SENSOR) {
+        } else if (event.sensor.getType() == PPG_TYPE) {
             StringBuilder sb = new StringBuilder();
             sb.append(hardwareTimestamp);
             for (float value : event.values) {
@@ -251,5 +268,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onDestroy() {
         super.onDestroy();
         stopCollecting();
+        // 释放WakeLock
+        if (wakeLock != null && wakeLock.isHeld()) {
+            wakeLock.release();
+        }
     }
 }
