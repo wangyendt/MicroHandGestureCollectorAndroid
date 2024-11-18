@@ -23,8 +23,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.wayne.microhandgesturecollectorandroid.utils.SensorUtils;
-import com.wayne.lark_bot.*;
-import com.wayne.lark_custom_bot.*;
+//import com.wayne.lark_bot.*;
+//import com.wayne.lark_custom_bot.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private String user_open_id = "";
 
-    private LarkBot bot;
+//    private LarkBot bot;
     private FileWriter fileWriterAcc, fileWriterGyro;
     private File accFile, gyroFile;
 
