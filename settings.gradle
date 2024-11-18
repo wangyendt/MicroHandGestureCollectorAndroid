@@ -16,14 +16,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven {
-            name = "Lark Custom Bot"
-            url = uri("https://maven.pkg.github.com/wangyendt/java_tools")
-            credentials {
-                username = "wangyendt"
-                password = "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"
-            }
-        }
     }
 }
 
